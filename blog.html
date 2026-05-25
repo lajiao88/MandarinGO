@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html class="no-js" lang="id">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>MandarinGo - Blog & Artikel Belajar Mandarin</title>
+    <meta name="description" content="Artikel tips belajar Mandarin, strategi HSK, dan informasi karakter Hanzi.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Font Awesome & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* ===== MINIMALIST THEME (sama dengan index) ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #2d3e3f;
+            background: #fff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        img { max-width: 100%; height: auto; display: block; }
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: #1e2c2d;
+            margin-bottom: 1rem;
+        }
+        a { text-decoration: none; color: inherit; transition: 0.2s; }
+        .btn {
+            display: inline-block;
+            background: #b51f09;
+            color: #fff;
+            font-weight: 600;
+            padding: 10px 24px;
+            border-radius: 40px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover { background: #d73c37; transform: translateY(-2px); }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #b51f09;
+            color: #b51f09;
+        }
+        .btn-outline:hover { background: #b51f09; color: #fff; }
+
+        /* header */
+        .header-area {
+            background: #fff;
+            border-bottom: 1px solid #eef2ef;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .menu-area .second-menu { padding: 12px 0; }
+        .row-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo img { max-height: 48px; }
+        .main-menu ul {
+            display: flex;
+            gap: 1.8rem;
+            list-style: none;
+        }
+        .main-menu ul li a {
+            font-weight: 500;
+            color: #2c3e3f;
+        }
+        .main-menu ul li a:hover, .main-menu ul li.active a { color: #b51f09; }
+        .header-btn .btn { padding: 8px 22px; font-size: 0.85rem; }
+        .responsive { display: none; }
+
+        /* breadcrumb */
+        .breadcrumb-area {
+            background: #e6e0ae;
+            padding: 60px 0;
+            text-align: center;
+        }
+        .breadcrumb-title h2 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            background: none;
+            list-style: none;
+        }
+        .breadcrumb a { color: #b51f09; }
+        .breadcrumb .active { color: #2d3e3f; }
+
+        /* blog listing */
+        .inner-blog { padding: 80px 0; }
+        .bsingle__post {
+            background: #fff;
+            border-radius: 24px;
+            border: 1px solid #eef2ef;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+        .bsingle__post-thumb img { width: 100%; height: 240px; object-fit: cover; }
+        .bsingle__content { padding: 1.8rem; }
+        .meta-info ul {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 0.8rem;
+            font-size: 0.85rem;
+            color: #b51f09;
+        }
+        .bsingle__content h2 { font-size: 1.6rem; margin: 0.5rem 0; }
+        .blog__btn .btn { margin-top: 1rem; }
+
+        /* sidebar */
+        .widget {
+            background: #fff;
+            border: 1px solid #eef2ef;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .widget-title h4 {
+            font-size: 1.3rem;
+            text-align: center;
+            position: relative;
+        }
+        .slidebar__form { display: flex; gap: 0.5rem; }
+        .slidebar__form input {
+            flex: 1;
+            padding: 10px 16px;
+            border: 1px solid #ddd;
+            border-radius: 40px;
+        }
+        .slidebar__form button {
+            background: #b51f09;
+            border: none;
+            padding: 0 16px;
+            border-radius: 40px;
+            color: #fff;
+        }
+        .widget-insta-post {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 10px;
+        }
+        .widget-social a {
+            display: inline-block;
+            margin: 0 8px;
+            font-size: 1.2rem;
+            color: #b51f09;
+        }
+        .cat__list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #edf2ef;
+        }
+        .widget__post li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+        .widget__post-thumb img { width: 70px; height: 70px; object-fit: cover; border-radius: 12px; }
+        .widget__post-content h6 { margin-bottom: 0.2rem; font-size: 0.9rem; }
+        .widget__tag ul { display: flex; flex-wrap: wrap; gap: 8px; }
+        .widget__tag li a {
+            background: #f0f3f0;
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+        }
+
+        /* pagination */
+        .pagination {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        .page-item a, .page-item span {
+            background: #f0f3f0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            color: #1e2c2d;
+        }
+        .page-item.active a { background: #b51f09; color: #fff; }
+
+        /* footer */
+        .footer-area {
+            background: #1e2c2d;
+            color: #cfdbd8;
+            padding: 60px 0 30px;
+            margin-top: 2rem;
+        }
+        .footer-widget h4 { color: #fff; margin-bottom: 1rem; }
+        .footer-links li { margin-bottom: 0.6rem; list-style: none; }
+        .footer-links a:hover { color: #dfbc5e; }
+        .footer-social a {
+            background: rgba(255,255,255,0.08);
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .copyright { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; margin-top: 2rem; }
+
+        @media (max-width: 768px) {
+            .main-menu { display: none; }
+            .responsive { display: block; font-size: 1.5rem; cursor: pointer; }
+            .row-header { flex-wrap: wrap; }
+            .col-nav { order: 2; width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header-area">
+    <div id="header-sticky" class="menu-area">
+        <div class="container">
+            <div class="second-menu">
+                <div class="row-header">
+                    <div class="logo">
+                        <a href="index.html"><img src="img/logo/logo.png" alt="MandarinGo Logo"></a>
+                    </div>
+                    <div class="col-nav">
+                        <div class="responsive"><i class="fas fa-bars"></i></div>
+                        <div class="main-menu">
+                            <ul>
+                                <li><a href="index.html">Beranda</a></li>
+                                <li><a href="index.html#features">Fitur</a></li>
+                                <li><a href="index.html#pricing">Harga</a></li>
+                                <li class="active"><a href="blog.html">Blog</a></li>
+                                <li><a href="index.html#contact">Kontak</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="header-btn">
+                        <a href="#" class="btn">Unduh Aplikasi</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- breadcrumb -->
+    <section class="breadcrumb-area">
+        <div class="container">
+            <div class="breadcrumb-title">
+                <h2>Blog MandarinGo</h2>
+                <p>Tips & trik belajar Mandarin, persiapan HSK, dan budaya Tiongkok</p>
+            </div>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li><a href="index.html">Beranda</a></li>
+                    <li class="active">/ Blog</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- inner blog -->
+    <section class="inner-blog">
+        <div class="container">
+            <div class="row" style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                <div class="col-lg-8" style="flex: 2; min-width: 280px;">
+                    <!-- post 1 -->
+                    <div class="bsingle__post">
+                        <div class="bsingle__post-thumb">
+                            <img src="img/blog/inner_b1.jpg" alt="belajar nada mandarin">
+                        </div>
+                        <div class="bsingle__content">
+                            <div class="meta-info">
+                                <ul><li><i class="far fa-user"></i> by Tim MandarinGo</li><li><i class="far fa-comments"></i> 12 Komentar</li></ul>
+                            </div>
+                            <h2><a href="blog-details.html">5 Cara Jitu Menguasai Nada Mandarin (声调) untuk Pemula</a></h2>
+                            <p>Nada adalah jantung bahasa Mandarin. Pelajari teknik mendengarkan, meniru, dan visualisasi nada agar tidak salah ucap. Dilengkapi latihan interaktif dari aplikasi MandarinGo.</p>
+                            <div class="blog__btn"><a href="blog-details.html" class="btn">Baca Selengkapnya</a></div>
+                        </div>
+                    </div>
+
+                    <!-- post 2 (video embed) -->
+                    <div class="bsingle__post">
+                        <div class="bsingle__post-thumb video-p" style="position: relative;">
+                            <img src="img/blog/inner_b2.jpg" alt="tips HSK">
+                            <a href="https://www.youtube.com/watch?v=vKSA_idPZkc" class="popup-video" style="position: absolute; top:50%; left:50%; transform:translate(-50%,-50%); background:#b51f09; padding:10px 18px; border-radius:50%; color:#fff;"><i class="fas fa-play"></i></a>
+                        </div>
+                        <div class="bsingle__content">
+                            <div class="meta-info"><ul><li><i class="far fa-user"></i> by Master Liu</li><li><i class="far fa-comments"></i> 24 Komentar</li></ul></div>
+                            <h2><a href="blog-details.html">Strategi Lulus HSK 4 Dalam 3 Bulan – Metode Terbukti</a></h2>
+                            <p>Jadwal harian, sumber belajar gratis, dan tips menghafal kosakata dengan flashcard. Program akselerasi dari MandarinGo.</p>
+                            <div class="blog__btn"><a href="blog-details.html" class="btn">Baca Selengkapnya</a></div>
+                        </div>
+                    </div>
+
+                    <!-- post 3 slider gallery -->
+                    <div class="bsingle__post">
+                        <div class="bsingle__post-thumb" style="display: flex; gap: 5px;">
+                            <img src="img/blog/inner_b3.jpg" alt="menulis hanzi" style="width:33%">
+                            <img src="img/blog/inner_b2.jpg" alt="kosakata" style="width:33%">
+                            <img src="img/blog/inner_b1.jpg" alt="percakapan" style="width:33%">
+                        </div>
+                        <div class="bsingle__content">
+                            <div class="meta-info"><ul><li><i class="far fa-user"></i> by Li Wei</li><li><i class="far fa-comments"></i> 8 Komentar</li></ul></div>
+                            <h2><a href="blog-details.html">Rahasia Mengingat 100 Karakter Hanzi Setiap Bulan</a></h2>
+                            <p>Gunakan metode cerita radikal (部首) dan ruang pengulangan terjadwal. Praktik langsung di aplikasi MandarinGo.</p>
+                            <div class="blog__btn"><a href="blog-details.html" class="btn">Baca Selengkapnya</a></div>
+                        </div>
+                    </div>
+
+                    <!-- post 4 quote -->
+                    <div class="bsingle__post">
+                        <div class="bsingle__content" style="background:#e6e0ae; border-radius: 24px;">
+                            <div class="meta-info"><ul><li><i class="far fa-user"></i> by Chen Hui</li><li><i class="far fa-clock"></i> 2 hari lalu</li></ul></div>
+                            <i class="fas fa-quote-left" style="font-size:2rem; color:#b51f09; margin-bottom:1rem;"></i>
+                            <h2><a href="blog-details.html">“Belajar Mandarin itu menyenangkan jika kita tahu caranya.” – Pengalaman pengguna MandarinGo</a></h2>
+                        </div>
+                    </div>
+
+                    <!-- pagination -->
+                    <div class="pagination-wrap">
+                        <ul class="pagination">
+                            <li class="page-item"><a href="#"><i class="fas fa-angle-left"></i></a></li>
+                            <li class="page-item active"><a href="#">1</a></li>
+                            <li class="page-item"><a href="#">2</a></li>
+                            <li class="page-item"><a href="#">3</a></li>
+                            <li class="page-item"><a href="#"><i class="fas fa-angle-right"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- sidebar -->
+                <div class="col-lg-4" style="flex: 1; min-width: 260px;">
+                    <aside>
+                        <div class="widget">
+                            <div class="widget-title"><h4>Cari Artikel</h4></div>
+                            <div class="slidebar__form">
+                                <form action="#"><input type="text" placeholder="Kata kunci..."><button><i class="fas fa-search"></i></button></form>
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <div class="widget-title"><h4>Follow Kami</h4></div>
+                            <div class="widget-social text-center">
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <div class="widget-title"><h4>Kategori</h4></div>
+                            <ul class="cat__list">
+                                <li><a href="#">Tips HSK <span>(12)</span></a></li>
+                                <li><a href="#">Kosakata & Hanzi <span>(23)</span></a></li>
+                                <li><a href="#">Budaya Tiongkok <span>(8)</span></a></li>
+                                <li><a href="#">Grammar Mandarin <span>(15)</span></a></li>
+                            </ul>
+                        </div>
+                        <div class="widget">
+                            <div class="widget-title"><h4>Posting Terbaru</h4></div>
+                            <div class="widget__post">
+                                <ul>
+                                    <li><div class="widget__post-thumb"><img src="img/blog/aside/post_01.jpg" alt=""></div><div class="widget__post-content"><h6><a href="#">Panduan Nada ke-3 yang Ringan</a></h6><span><i class="far fa-clock"></i> 3 jam lalu</span></div></li>
+                                    <li><div class="widget__post-thumb"><img src="img/blog/aside/post_02.jpg" alt=""></div><div class="widget__post-content"><h6><a href="#">15 Frasa Penting untuk Traveling</a></h6><span><i class="far fa-clock"></i> 5 jam lalu</span></div></li>
+                                    <li><div class="widget__post-thumb"><img src="img/blog/aside/post_03.jpg" alt=""></div><div class="widget__post-content"><h6><a href="#">Perbedaan 不 dan 没</a></h6><span><i class="far fa-clock"></i> 1 hari lalu</span></div></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="widget">
+                            <div class="widget-title"><h4>Tags Populer</h4></div>
+                            <div class="widget__tag"><ul><li><a href="#">HSK</a></li><li><a href="#">Pinyin</a></li><li><a href="#">Hanzi</a></li><li><a href="#">Belajar Cepat</a></li><li><a href="#">Percakapan</a></li></ul></div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer-area">
+    <div class="container">
+        <div class="row" style="display: flex; gap: 2rem; flex-wrap: wrap;">
+            <div class="col-lg-4"><div class="footer-widget"><img src="img/logo/w_logo.png" alt="logo" style="max-height:45px;"><p>Platform belajar Mandarin paling interaktif. Ribuan siswa telah mahir HSK bersama kami.</p><div class="footer-social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div></div>
+            <div class="col-lg-2"><div class="footer-widget"><h4>Menu</h4><ul class="footer-links"><li><a href="index.html">Beranda</a></li><li><a href="index.html#features">Fitur</a></li><li><a href="index.html#pricing">Harga</a></li><li><a href="blog.html">Blog</a></li></ul></div></div>
+            <div class="col-lg-3"><div class="footer-widget"><h4>Kontak</h4><ul class="footer-links"><li><i class="fas fa-phone-alt"></i> +62 812 3456 7890</li><li><i class="fas fa-envelope"></i> hello@mandaringo.com</li><li><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</li></ul></div></div>
+            <div class="col-lg-3"><div class="footer-widget"><h4>Langganan</h4><p>Dapatkan tips gratis via email.</p><input type="email" placeholder="Email Anda" style="width:100%; padding:8px; border-radius:40px; border:none;"><button class="btn mt-2" style="margin-top:10px;">Kirim</button></div></div>
+        </div>
+        <div class="copyright"><p>© 2025 MandarinGo — Belajar Mandarin Modern. All rights reserved.</p></div>
+    </div>
+</footer>
+<script>
+    // scrollUp & mobile menu simple
+    const toggle = document.querySelector('.responsive');
+    const menu = document.querySelector('.main-menu');
+    if(toggle && menu) toggle.addEventListener('click',()=>{ menu.classList.toggle('show'); menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex'; });
+</script>
+</body>
+</html>
